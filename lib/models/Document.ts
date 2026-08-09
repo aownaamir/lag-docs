@@ -1,4 +1,4 @@
-import mongoose, { Schema, models } from "mongoose";
+import mongoose, { Schema } from "mongoose";
 
 const DocumentSchema = new Schema(
   {
@@ -6,16 +6,20 @@ const DocumentSchema = new Schema(
       type: String,
       required: true,
       default: "Untitled Document",
+      trim: true,
     },
+
     content: {
       type: String,
       default: "<p></p>",
     },
+
     owner: {
       type: Schema.Types.ObjectId,
       ref: "User",
       required: true,
     },
+
     sharedWith: [
       {
         type: Schema.Types.ObjectId,
@@ -29,4 +33,4 @@ const DocumentSchema = new Schema(
 );
 
 export const Document =
-  models.Document || mongoose.model("Document", DocumentSchema);
+  mongoose.models.Document || mongoose.model("Document", DocumentSchema);
