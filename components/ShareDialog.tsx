@@ -54,7 +54,6 @@ export default function ShareDialog({ documentId, onClose }: ShareDialogProps) {
       }
 
       setMessage("Document shared successfully");
-
       setSelectedUser("");
     } catch (error) {
       setMessage(
@@ -74,43 +73,68 @@ export default function ShareDialog({ documentId, onClose }: ShareDialogProps) {
   const availableUsers = users.filter((user) => user._id !== currentUser?._id);
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4">
-      <div className="w-full max-w-md rounded-xl bg-white p-6 shadow-xl">
-        <div className="mb-6 flex items-center justify-between">
-          <h2 className="text-xl font-semibold">Share document</h2>
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4">
+      <div className="w-full max-w-md border border-gray-200 bg-white shadow-2xl">
+        <div className="flex items-center justify-between border-b border-gray-200 px-6 py-5">
+          <div>
+            <p className="mb-1 text-[10px] font-bold uppercase tracking-[0.2em] text-red-600">
+              Access
+            </p>
+
+            <h2 className="text-xl font-bold tracking-tight text-gray-950">
+              Share document
+            </h2>
+          </div>
 
           <button
             onClick={onClose}
-            className="rounded px-2 py-1 text-gray-500 hover:bg-gray-100"
+            className="border border-gray-200 px-2.5 py-1 text-sm text-gray-500 transition hover:border-red-500 hover:bg-red-50 hover:text-red-600"
+            aria-label="Close"
           >
             ✕
           </button>
         </div>
 
-        <div className="space-y-4">
-          <select
-            value={selectedUser}
-            onChange={(event) => setSelectedUser(event.target.value)}
-            className="w-full rounded-lg border px-3 py-2"
-          >
-            <option value="">Select a user</option>
+        <div className="space-y-5 p-6">
+          <div>
+            <label className="mb-2 block text-xs font-bold uppercase tracking-wider text-gray-500">
+              Give access to
+            </label>
 
-            {availableUsers.map((user) => (
-              <option key={user._id} value={user._id}>
-                {user.name} ({user.email})
-              </option>
-            ))}
-          </select>
+            <select
+              value={selectedUser}
+              onChange={(event) => setSelectedUser(event.target.value)}
+              className="w-full border border-gray-300 bg-white px-3 py-2.5 text-sm text-gray-900 outline-none transition focus:border-red-600 focus:ring-1 focus:ring-red-600"
+            >
+              <option value="">Select a user</option>
+
+              {availableUsers.map((user) => (
+                <option key={user._id} value={user._id}>
+                  {user.name} ({user.email})
+                </option>
+              ))}
+            </select>
+          </div>
 
           <button
             onClick={shareDocument}
             disabled={!selectedUser || loading}
-            className="w-full rounded-lg bg-black px-4 py-2 text-white disabled:opacity-40"
+            className="w-full border border-red-600 bg-red-600 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-red-700 disabled:cursor-not-allowed disabled:border-gray-300 disabled:bg-gray-200 disabled:text-gray-500"
           >
-            {loading ? "Sharing..." : "Share"}
+            {loading ? "Sharing..." : "Share Document"}
           </button>
 
-          {message && <p className="text-sm text-gray-600">{message}</p>}
+          {message && (
+            <div
+              className={`border-l-2 px-3 py-2 text-sm ${
+                message.includes("successfully")
+                  ? "border-green-600 bg-green-50 text-green-700"
+                  : "border-red-600 bg-red-50 text-red-700"
+              }`}
+            >
+              {message}
+            </div>
+          )}
         </div>
       </div>
     </div>

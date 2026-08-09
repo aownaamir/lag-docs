@@ -13,6 +13,7 @@ type EditorProps = {
   initialTitle: string;
   initialContent: string;
 };
+
 export default function Editor({
   documentId,
   initialTitle,
@@ -63,9 +64,7 @@ export default function Editor({
 
   const editor = useEditor({
     extensions: [StarterKit, Underline],
-
     content: initialContent,
-
     immediatelyRender: false,
 
     onUpdate: ({ editor }) => {
@@ -103,48 +102,62 @@ export default function Editor({
 
   return (
     <div className="min-h-screen bg-white">
-      <div className="sticky top-0 z-10 border-b bg-white">
-        <div className="mx-auto max-w-5xl px-6 py-3">
-          <div className="flex items-center gap-4">
+      <div className="sticky top-0 z-10 border-b border-gray-200 bg-white">
+        <div className="mx-auto max-w-5xl px-6 py-4">
+          <div className="flex items-center gap-5">
             <button
               type="button"
               onClick={() => router.push("/")}
-              className="rounded px-2 py-1 text-gray-500 hover:bg-gray-100"
+              className="border-r border-gray-200 pr-5 text-lg text-gray-400 transition hover:text-red-600"
             >
               ←
             </button>
-            <input
-              value={title}
-              onChange={(event) => {
-                const newTitle = event.target.value;
 
-                setTitle(newTitle);
+            <div className="min-w-0 flex-1">
+              <input
+                value={title}
+                onChange={(event) => {
+                  const newTitle = event.target.value;
 
-                if (editor) {
-                  scheduleSave(editor.getHTML(), newTitle);
-                }
-              }}
-              className="w-full max-w-xl border-none text-2xl font-bold outline-none"
-              placeholder="Untitled Document"
-            />
-            <div className="flex items-center gap-4">
-              <span className="text-sm text-gray-500">{saveStatus}</span>
+                  setTitle(newTitle);
+
+                  if (editor) {
+                    scheduleSave(editor.getHTML(), newTitle);
+                  }
+                }}
+                className="w-full border-none bg-transparent text-2xl font-bold tracking-tight text-gray-950 outline-none placeholder:text-gray-300"
+                placeholder="Untitled Document"
+              />
+            </div>
+
+            <div className="flex shrink-0 items-center gap-4">
+              <span
+                className={`text-xs font-medium ${
+                  saveStatus === "Failed to save"
+                    ? "text-red-600"
+                    : saveStatus === "Saving..."
+                      ? "text-gray-400"
+                      : "text-gray-500"
+                }`}
+              >
+                {saveStatus}
+              </span>
 
               <button
                 type="button"
                 onClick={() => setShowShareDialog(true)}
-                className="rounded-lg bg-black px-4 py-2 text-sm text-white hover:bg-gray-800"
+                className="border border-red-600 bg-red-600 px-5 py-2 text-sm font-semibold text-white transition hover:bg-red-700"
               >
                 Share
               </button>
-            </div>{" "}
+            </div>
           </div>
         </div>
 
         <Toolbar editor={editor} />
       </div>
 
-      <div className="mx-auto max-w-4xl px-8 py-12">
+      <div className="mx-auto max-w-4xl px-8 py-14">
         <EditorContent editor={editor} />
       </div>
 

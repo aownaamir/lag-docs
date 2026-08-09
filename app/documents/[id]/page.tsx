@@ -15,7 +15,6 @@ export default function DocumentPage() {
   const router = useRouter();
 
   const [document, setDocument] = useState<DocumentData | null>(null);
-
   const [error, setError] = useState("");
 
   useEffect(() => {
@@ -53,21 +52,46 @@ export default function DocumentPage() {
 
   if (error) {
     return (
-      <main className="p-8">
-        <p>{error}</p>
+      <main className="flex min-h-screen items-center justify-center bg-gray-50 px-6">
+        <div className="w-full max-w-md border border-gray-200 bg-white p-8">
+          <div className="mb-5 flex items-center gap-3">
+            <span className="h-2 w-2 bg-red-600" />
+            <p className="text-xs font-bold uppercase tracking-[0.2em] text-red-600">
+              Document Error
+            </p>
+          </div>
 
-        <button
-          onClick={() => router.push("/")}
-          className="mt-4 rounded border px-4 py-2"
-        >
-          Back to Documents
-        </button>
+          <h1 className="text-xl font-bold text-gray-950">
+            Unable to load document
+          </h1>
+
+          <p className="mt-2 text-sm text-gray-500">
+            The document could not be loaded. Please return to your workspace
+            and try again.
+          </p>
+
+          <button
+            onClick={() => router.push("/")}
+            className="mt-6 border border-red-600 bg-red-600 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-red-700"
+          >
+            Back to Documents
+          </button>
+        </div>
       </main>
     );
   }
 
   if (!document) {
-    return <main className="p-8">Loading document...</main>;
+    return (
+      <main className="flex min-h-screen items-center justify-center bg-white">
+        <div className="text-center">
+          <div className="mx-auto mb-4 h-8 w-1 bg-red-600" />
+          <p className="text-sm font-medium text-gray-500">
+            Loading document...
+          </p>
+        </div>
+      </main>
+    );
   }
 
   return (

@@ -8,25 +8,29 @@ type ToolbarProps = {
 
 export default function Toolbar({ editor }: ToolbarProps) {
   const buttonClass = (active = false) =>
-    `rounded px-3 py-2 text-sm ${
-      active ? "bg-gray-200 font-semibold" : "hover:bg-gray-100"
+    `border px-3 py-1.5 text-sm font-medium transition ${
+      active
+        ? "border-red-600 bg-red-600 text-white"
+        : "border-transparent text-gray-600 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-950"
     }`;
 
   return (
-    <div className="border-t">
-      <div className="mx-auto flex max-w-5xl gap-1 px-6 py-2">
+    <div className="border-t border-gray-100 bg-white">
+      <div className="mx-auto flex max-w-5xl items-center gap-1 px-6 py-2">
         <button
           type="button"
           onClick={() => editor.chain().focus().toggleBold().run()}
           className={buttonClass(editor.isActive("bold"))}
+          aria-label="Bold"
         >
-          B
+          <strong>B</strong>
         </button>
 
         <button
           type="button"
           onClick={() => editor.chain().focus().toggleItalic().run()}
           className={buttonClass(editor.isActive("italic"))}
+          aria-label="Italic"
         >
           <i>I</i>
         </button>
@@ -35,11 +39,12 @@ export default function Toolbar({ editor }: ToolbarProps) {
           type="button"
           onClick={() => editor.chain().focus().toggleUnderline().run()}
           className={buttonClass(editor.isActive("underline"))}
+          aria-label="Underline"
         >
           <u>U</u>
         </button>
 
-        <div className="mx-1 border-l" />
+        <div className="mx-2 h-5 border-l border-gray-200" />
 
         <button
           type="button"
@@ -69,7 +74,7 @@ export default function Toolbar({ editor }: ToolbarProps) {
           H2
         </button>
 
-        <div className="mx-1 border-l" />
+        <div className="mx-2 h-5 border-l border-gray-200" />
 
         <button
           type="button"

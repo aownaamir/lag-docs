@@ -18,9 +18,18 @@ export default function HomePage() {
 
   return (
     <main className="min-h-screen bg-gray-50">
-      <header className="border-b bg-white">
+      <header className="border-b border-gray-200 bg-white">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-          <h1 className="text-xl font-bold">Lag Docs</h1>
+          <div className="flex items-center gap-3">
+            <div>
+              <h1 className="text-lg font-bold tracking-tight text-gray-950">
+                Lag Docs
+              </h1>
+              <p className="text-[9px] font-semibold uppercase tracking-[0.2em] text-gray-400">
+                Workspace
+              </p>
+            </div>
+          </div>
 
           <UserSwitcher />
         </div>
