@@ -17,7 +17,7 @@ https://github.com/aownaamir/lag-docs
   Short overview of the application architecture and main technical decisions.
 
 - `AI_WORKFLOW.md`
-  Summary of how AI tools were used during development.
+  Summary of AI assistance during development.
 
 ## Demo Users
 
@@ -58,21 +58,9 @@ The application supports:
 
 ## Deployment
 
-The application is deployed on Vercel and uses MongoDB for persistence.
+The application is deployed on Vercel and uses MongoDB Atlas as deployed database service.
 
-## Included Files
-
-```text
-lag-docs/
-├── Source Code
-├── README.md
-├── ARCHITECTURE.md
-├── AI_WORKFLOW.md
-├── SUBMISSION.md
-└── walkthrough-video.txt
-```
-
-## Known Limitations
+## Limitations
 
 The current version does not include:
 

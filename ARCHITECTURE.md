@@ -1,6 +1,6 @@
 ## Overview
 
-Lag Docs is a small full-stack document editor built with Next.js, React, TypeScript, Tiptap, and MongoDB.
+Lag Docs is a small full-stack document editor built with Next.js, React, TypeScript, Tiptap, and MongoDB Atlas.
 
 The main goal was to build the complete document workflow, including creating, editing, saving, importing, and sharing documents, within the assessment time limit.
 
@@ -17,7 +17,7 @@ Next.js App Router
    │
    │ API Routes
    ▼
-MongoDB
+MongoDB Atlas
 ```
 
 ## Frontend
@@ -51,7 +51,7 @@ The API checks the current user before allowing access to documents.
 
 ## Database
 
-MongoDB is used for persistence through Mongoose.
+MongoDB Atlas is used with persistence through Mongoose.
 
 The main models are:
 
@@ -149,7 +149,7 @@ These are possible future additions if more development time is available.
 
 ## Deployment
 
-The application is deployed on Vercel and uses MongoDB for persistence.
+The application is deployed on Vercel and uses MongoDB Atlas for data storage.
 
 Live application:
 
@@ -157,6 +157,6 @@ https://lag-docs.vercel.app/
 
 ## Summary
 
-The project keeps the architecture simple by using Next.js for the frontend and API layer, Tiptap for editing, and MongoDB for persistence.
+The project keeps the architecture simple by using Next.js for the frontend and API layer, Tiptap for editing, and MongoDB Atlas for pruduction data storage.
 
 This was enough to cover the main product requirements without adding unnecessary services or complexity.

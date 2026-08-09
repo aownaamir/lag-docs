@@ -1,12 +1,12 @@
 # AI Workflow Note
 
-I used AI tools during development to speed up implementation and review, while making the final decisions and checking the code myself.
+The only tool I used is ChatGPT which during development to speed up implementation.
 
 ## How AI Was Used
 
-AI was mainly used for:
+AI was used for:
 
-- Scaffolding and structuring some of the application code
+- Scaffolding and structuring of the application code
 - Helping with TypeScript and Next.js issues
 - Suggesting API and MongoDB implementation details
 - Improving the UI styling and keeping the design consistent
@@ -15,15 +15,13 @@ AI was mainly used for:
 
 ## UI Improvements
 
-AI was also used to suggest improvements to the interface after the main functionality was complete.
+AI was also used to make final improvements to the interface after the main functionality was complete, to match the custom theme.
 
-I kept the final design simple, with a red and white theme, sharp borders, clear spacing, and a consistent layout. I removed suggestions that added unnecessary visual elements or made the application feel too complicated.
+I kept the final design simple, with a red and white theme, sharp borders, clear spacing, and a consistent layout. I removed some unnecessary visual elements too keep things simple and clean.
 
 ## What I Changed
 
-I did not use AI output without review.
-
-I changed or simplified generated code when it did not fit the existing implementation, added validation where needed, and adjusted UI suggestions to match the product requirements and the limited development time.
+I changed or simplified generated code when it did not fit my expectations, adjusted UI suggestions to match the product requirements and the limited development time.
 
 ## Verification
 
