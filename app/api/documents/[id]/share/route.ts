@@ -66,7 +66,8 @@ export async function POST(request: Request, { params }: Params) {
     }
 
     const alreadyShared = document.sharedWith.some(
-      (sharedUserId) => sharedUserId.toString() === userId,
+      (sharedUserId: mongoose.Types.ObjectId) =>
+        sharedUserId.toString() === userId,
     );
 
     if (!alreadyShared) {

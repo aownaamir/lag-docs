@@ -1,17 +1,23 @@
-import mongoose, { Schema } from "mongoose";
+import mongoose, { Schema, Document as MongooseDocument } from "mongoose";
 
-const DocumentSchema = new Schema(
+export interface IDocument extends MongooseDocument {
+  title: string;
+  content: string;
+  owner: mongoose.Types.ObjectId;
+  sharedWith: mongoose.Types.ObjectId[];
+}
+
+const documentSchema = new Schema<IDocument>(
   {
     title: {
       type: String,
       required: true,
       default: "Untitled Document",
-      trim: true,
     },
 
     content: {
       type: String,
-      default: "<p></p>",
+      default: "",
     },
 
     owner: {
@@ -33,4 +39,5 @@ const DocumentSchema = new Schema(
 );
 
 export const Document =
-  mongoose.models.Document || mongoose.model("Document", DocumentSchema);
+  mongoose.models.Document ||
+  mongoose.model<IDocument>("Document", documentSchema);
