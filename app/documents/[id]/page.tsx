@@ -85,10 +85,7 @@ export default function DocumentPage() {
     return (
       <main className="flex min-h-screen items-center justify-center bg-white">
         <div className="text-center">
-          <div className="mx-auto mb-4 h-8 w-1 bg-red-600" />
-          <p className="text-sm font-medium text-gray-500">
-            Loading document...
-          </p>
+          <p className="text-sm font-medium text-gray-500">Loading...</p>
         </div>
       </main>
     );

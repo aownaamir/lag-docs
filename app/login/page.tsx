@@ -35,9 +35,6 @@ export default function LoginPage() {
               <p className="text-xl font-bold tracking-tight text-white">
                 Lag Docs
               </p>
-              <p className="text-[9px] font-semibold uppercase tracking-[0.2em] text-gray-500">
-                Collaborative Workspace
-              </p>
             </div>
           </div>
 
@@ -56,10 +53,6 @@ export default function LoginPage() {
             </p>
           </div>
         </div>
-
-        <p className="text-xs uppercase tracking-wider text-gray-600">
-          Product Engineering Assessment
-        </p>
       </div>
 
       <div className="flex flex-1 items-center justify-center px-6 py-12">
@@ -115,7 +108,7 @@ export default function LoginPage() {
 
               {users.length === 0 && (
                 <p className="border border-dashed border-gray-300 px-4 py-6 text-center text-sm text-gray-500">
-                  Loading demo users...
+                  Loading...
                 </p>
               )}
             </div>
